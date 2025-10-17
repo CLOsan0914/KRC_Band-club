@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>バンドタイムスケジュール</title>
+  <style>
+    body {
+  font-family: 'Impact', sans-serif;
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5em;
+  color: #ff3c3c;
+  text-shadow: 2px 2px 5px #800;
+  margin-bottom: 10px;
+}
+
+.description {
+  text-align: center;
+  font-size: 1.2em;
+  color: #eee;
+  margin-bottom: 30px;
+  font-family: 'Rock Salt', cursive;
+}
+
+.schedule {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.slot {
+  background: linear-gradient(135deg, #111, #222);
+  border: 2px dashed #ffcc00;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #ff3c3c;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.slot.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slot h2 {
+  margin: 0 0 10px;
+  font-size: 1.2em;
+  color: #ffcc00;
+}
+
+.band-name {
+  font-size: 1.6em;
+  font-weight: bold;
+  color: #ff3c3c;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 3px #900;
+}
+
+.slot ul {
+  margin: 0 0 10px;
+  padding-left: 20px;
+}
+
+.slot li {
+  font-size: 1em;
+  color: #ccc;
+}
+
+.slot img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 2px solid #fff;
+  margin-top: 10px;
+}
+  </style>
+</head>
+<body>
+  <h1>KRC軽音部ライブ</h1>
+  <div class="description">本日のライブ出演バンド一覧と演奏予定曲です。お気に入りのバンドを見逃さないようにチェック</div>
+  <div class="schedule">
+    <div class="slot">
+      <h2>10:00 - 10:30</h2>
+      <p class="band-name">バンドA</p>
+      <ul>
+        <li>曲A1 - 夜空のメロディ</li>
+        <li>曲A2 - 風のリズム</li>
+      </ul>
+      <img src="bandA.jpg" alt="バンドAの写真">
+    </div>
+    <div class="slot">
+      <h2>10:45 - 11:15</h2>
+      <p class="band-name">バンドA</p>
+      <ul>
+        <li>曲A1 - 夜空のメロディ</li>
+        <li>曲A2 - 風のリズム</li>
+      </ul>
+      <img src="bandB.jpg" alt="バンドBの写真">
+    </div>
+    <div class="slot">
+      <h2>11:30 - 12:00</h2>
+      <p class="band-name">バンドA</p>
+      <ul>
+        <li>曲A1 - 夜空のメロディ</li>
+        <li>曲A2 - 風のリズム</li>
+      </ul>
+      <img src="bandC.jpg" alt="バンドCの写真">
+    </div>
+    <div class="slot">
+      <h2>12:15 - 12:45</h2>
+      <p class="band-name">バンドA</p>
+      <ul>
+        <li>曲A1 - 夜空のメロディ</li>
+        <li>曲A2 - 風のリズム</li>
+      </ul>
+      <img src="bandD.jpg" alt="バンドDの写真">
+    </div>
+    <div class="slot">
+      <h2>13:00 - 13:30</h2>
+      <p class="band-name">バンドA</p>
+      <ul>
+        <li>曲A1 - 夜空のメロディ</li>
+        <li>曲A2 - 風のリズム</li>
+      </ul>
+      <img src="bandE.jpg" alt="バンドEの写真">
+    </div>
+    <div class="slot">
+      <h2>13:45 - 14:15</h2>
+      <p class="band-name">バンドA</p>
+      <ul>
+        <li>曲A1 - 夜空のメロディ</li>
+        <li>曲A2 - 風のリズム</li>
+      </ul>
+      <img src="bandF.jpg" alt="バンドFの写真">
+    </div>
+    <div class="slot">
+      <h2>14:30 - 15:00</h2>
+      <p class="band-name">バンドA</p>
+      <ul>
+        <li>曲A1 - 夜空のメロディ</li>
+        <li>曲A2 - 風のリズム</li>
+      </ul>
+      <img src="bandG.jpg" alt="バンドGの写真">
+    </div>
+    <div class="slot">
+      <h2>15:15 - 15:45</h2>
+      <p class="band-name">バンドA</p>
+        <li>曲A1 - 夜空のメロディ</li>
+        <li>曲A2 - 風のリズム</li>
+      </ul>
+      <img src="bandH.jpg" alt="バンドHの写真">
+    </div>
+  </div>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const slots = document.querySelectorAll(".slot");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    slots.forEach((slot) => {
+      observer.observe(slot);
+    });
+  });
+</script>
+</body>
+</html>
