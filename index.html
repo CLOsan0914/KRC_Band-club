@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>バンドタイムスケジュール</title>
+  <title>軽音部タイムスケジュール</title>
   <style>
     body {
   background: repeating-linear-gradient(
@@ -99,8 +99,8 @@ h1 {
 }
 
 .slot h2 {
-  margin: 0 0 10px;
-  font-size: 1.2em;
+  margin: 0 0 5px;
+  font-size: 2.5em;
   color: #ffcc00;
 }
 
@@ -129,6 +129,52 @@ h1 {
   border: 2px solid #fff;
   margin-top: 10px;
 }
+
+
+.slot-divider {
+  border: none;
+  border-top: 2px solid #ffcc00;
+  margin: 50px 0;
+}
+
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 12px 20px;
+  font-size: 1em;
+  background-color: #ffcc00;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00;
+  cursor: pointer;
+  display: none;
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+}
+
+#backToTop:hover {
+  background-color: #fff000;
+  box-shadow: 0 0 15px #fff000, 0 0 30px #fff000;
+}
+a.smart-link {
+      display: block;
+      padding: 12px 20px;
+      margin: 10px auto;
+      text-align: center;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 1.2em;
+      max-width: 90%;
+    }
+
+    a.smart-link:hover {
+      background-color: #0056b3;
+    }
+
   </style>
 </head>
 <body>
@@ -188,7 +234,7 @@ h1 {
       <h2>13:25 - 13:30</h2>
       <p class="band-name">ずっとマヨネーズでいいのに。(OB)</p>
       <ul>
-        <li>曲A1 - 秒針を噛む</li>
+        <li>曲1 - 秒針を噛む</li>
       </ul>
       <img src="print/img_9040.jpg" alt="バンドFの写真">
     </div>
@@ -200,6 +246,15 @@ h1 {
       </ul>
       <img src="print/maxresdefault.jpg" alt="バンドGの写真">
     </div>
+    
+    <hr class="slot-divider">
+
+    <a href="https://www.itc.ac.jp/" class="smart-link" target="_blank" rel="noopener noreferrer">
+      専門学校国際理工カレッジ
+  </a>
+
+
+<button id="backToTop">↑ TOP</button>
     
   <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -219,6 +274,20 @@ h1 {
       observer.observe(slot);
     });
   });
+  const backToTopBtn = document.getElementById('backToTop');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY + window.innerHeight >= document.body.scrollHeight - 100) {
+      backToTopBtn.style.display = 'block';
+    } else {
+      backToTopBtn.style.display = 'none';
+    }
+  });
+
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
 </script>
 </body>
 </html>
